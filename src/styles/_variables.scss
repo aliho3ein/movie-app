@@ -1,0 +1,47 @@
+/**Fonts */
+
+/** CSS Normalize */
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/**Colors */
+$primary-color: #01222c;
+$secondary-color: #314e5a;
+$text-color: #eee;
+$hell-color: aqua;
+
+/** */
+
+/* Scroll */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $secondary-color;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-moz-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: $secondary-color;
+  border-radius: 6px;
+}
+
+::-moz-scrollbar-track {
+  background: transparent;
+}
