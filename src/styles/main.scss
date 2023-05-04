@@ -1,5 +1,17 @@
 @import "./variables";
 
+/**Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;500&display=swap");
+
+/** CSS Normalize */
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: "Source Sans 3", sans-serif;
+}
+
 body {
   background-color: $primary-color;
   color: $text-color;
@@ -11,6 +23,16 @@ main {
   width: 100vw;
   display: flex;
   justify-content: center;
+  background-image: radial-gradient(
+    circle,
+    #1f3d48,
+    #183641,
+    #102f3a,
+    #082933,
+    #01222c,
+    #01222c,
+    #01222c
+  );
 
   .content {
     width: 70%;
@@ -27,6 +49,49 @@ main {
   height: 50px;
   width: 100%;
   padding-block: 50px;
-  display: grid;
+  display: flex;
   place-content: center;
+  gap: 50px;
+
+  a {
+    all: unset;
+    cursor: pointer;
+  }
+}
+
+/** alert */
+.alertMassage {
+  background-color: rgba($color: $secondary-color, $alpha: 0.7) !important;
+  color: $text-color !important;
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem !important;
+}
+
+/* Scroll */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $secondary-color;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-moz-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: $secondary-color;
+  border-radius: 6px;
+}
+
+::-moz-scrollbar-track {
+  background: transparent;
 }

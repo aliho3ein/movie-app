@@ -25,26 +25,26 @@
     background: url("./../../../public/assets/images/film.png");
     background-size: 230px;
     --rotate: 3deg;
-    --top: 120px;
+    --top: 115px;
     filter: drop-shadow(0 0 1px #eee);
-    animation: frameMove 50s linear infinite alternate;
+    animation: frameMove 60s linear infinite alternate;
   }
 
   .frameBase {
     height: 80px;
-    width: 50%;
+    width: 900px;
     float: right;
     overflow: hidden;
 
     .secondFrame {
       height: 30px;
-      width: 200%;
+      width: 1800px;
       background: url("./../../../public/assets/images/film.png");
       background-size: 230px;
       filter: drop-shadow(0 0 1px #ccc) blur(2px);
       --rotate: -4deg;
-      --top: 2px;
-      animation: frameMove 30s linear infinite alternate;
+      --top: 5px;
+      animation: frameMove 20s linear infinite alternate;
     }
   }
 }
