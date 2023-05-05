@@ -1,3 +1,5 @@
+@import "./../variables";
+
 .aSide {
   margin-block: 100px;
   width: 20%;
@@ -5,7 +7,6 @@
   user-select: none;
 
   .maniFilter {
-    height: 480px;
     width: 300px;
     position: sticky;
     transition: all 300ms;
@@ -16,7 +17,7 @@
     backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px 20px 20px;
 
     h2 {
       font-size: 1.1rem;
@@ -25,6 +26,7 @@
     }
 
     .sortItem {
+      all: unset;
       width: 95%;
       margin: 5px auto;
       background-color: #01222c;
@@ -37,8 +39,41 @@
       }
 
       input {
+        appearance: unset;
+        height: 11px;
+        aspect-ratio: 1;
+        background-color: #eee;
         margin-inline: 10px 4px;
         cursor: pointer;
+        border: 1px solid #fff;
+
+        &:checked {
+          background-color: $secondary-color;
+          position: relative;
+
+          &:after,
+          &:before {
+            content: "";
+            position: absolute;
+            height: 10px;
+            width: 2px;
+            background-color: $accent-color;
+            transform: rotate(40deg);
+            left: 6px;
+            top: -2px;
+          }
+
+          &:before {
+            height: 5px;
+            transform: rotate(-45deg);
+            top: 3px;
+            left: 2px;
+          }
+        }
+      }
+
+      input[type="radio"] {
+        border-radius: 50%;
       }
     }
   }

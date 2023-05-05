@@ -6,6 +6,8 @@ const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3",
   params: {
     api_key: key,
+    "primary_release_date.lte": "2023-06-01",
+    "primary_release_date.gte": "2012-01-01",
   },
   timeout: 8000,
 });

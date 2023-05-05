@@ -1,4 +1,4 @@
-export const getGenre = (id) => {
+const GetGenre = ({ id }) => {
   const genre = {
     28: "Action",
     12: "Adventure",
@@ -20,5 +20,7 @@ export const getGenre = (id) => {
     10752: "War",
     37: "Western",
   };
-  return genre[id];
+  return <span> {genre[id]} </span>;
 };
+
+export default GetGenre;

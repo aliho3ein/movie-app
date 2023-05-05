@@ -20,12 +20,14 @@
 
     .front {
       background: center / cover var(--posterImg);
+      -moz-backface-visibility: hidden;
     }
 
     .back {
       box-shadow: 0 0 8px #000;
       background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(8px) !important;
+
       transform: translateZ(-1px) scaleX(-1);
       padding-inline: 20px;
       display: flex;
@@ -71,7 +73,7 @@
         transition: opacity 500ms;
         transition-delay: 400ms;
 
-        span {
+        span .title {
           display: block;
           text-align: center;
           margin-bottom: 10px;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import style from "./../styles/components/movieCard.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { convertDate } from "../actions/changeData";
-import { getGenre } from "../actions/genre";
+import ConvertDate from "./changeData";
+import GetGenre from "./genre";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { faBookmark as marked } from "@fortawesome/free-solid-svg-icons";
 import { setVote } from "../actions/review";
@@ -24,15 +24,9 @@ const MovieCard = ({ data }) => {
   }, []);
 
   /** */
-  const genre = data.genre_ids
-    ?.slice(0, 3)
-    .map((item, index) => {
-      return getGenre(item);
-    })
-    .join(" , ");
-
-  //getGenre(item)
-
+  const genre = data.genre_ids?.slice(0, 3).map((item, index) => {
+    return <GetGenre key={index} id={item} />;
+  });
   /** Save to watchList */
   const saveToWatchList = () => {
     list.push(data);
@@ -55,7 +49,9 @@ const MovieCard = ({ data }) => {
         <div
           className={style.front}
           style={{
-            "--posterImg": `url(https://image.tmdb.org/t/p/w500${data.poster_path})`,
+            "--posterImg": data.poster_path
+              ? `url(https://image.tmdb.org/t/p/w500${data.poster_path})`
+              : "url('https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/original.png')",
           }}
         ></div>
         <div className={style.back}>
@@ -71,11 +67,11 @@ const MovieCard = ({ data }) => {
 
           <h2 className={style.name}>{data.title.slice(0, 20)}</h2>
           <span className={style.date}>
-            {date[2]} {convertDate(date[1])} {date[0]}
+            {date[2]} {<ConvertDate num={date[1]} />} {date[0]}
           </span>
-          <p>{genre}</p>
+          <p className={style.genre}>{genre}</p>
           <p>
-            <span>overView</span>
+            <span className={style.title}>overView</span>
             {data.overview.slice(0, 50)}...
           </p>
           <div className={style.rating}>{setVote(data.vote_average)}</div>
