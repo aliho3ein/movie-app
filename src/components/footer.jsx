@@ -26,7 +26,6 @@ const Footer = () => {
               <li>Contact</li>
             </ul>
           </div>
-
           <div>
             <h2>
               <FontAwesomeIcon icon={faFilm} className={style.icon} />
@@ -55,11 +54,11 @@ const Footer = () => {
         </div>
 
         <div className={style.footerColumn}>
-          <p className={style.subscribe}>
+          <div className={style.subscribe}>
             <h2>Subscribe</h2>
             Subscribe to Movie-App RSS Feed to receive updates on movies,
             tv-series and news
-          </p>
+          </div>
           <input type="email" placeholder="Enter your Email" />
           <button>Submit</button>
         </div>

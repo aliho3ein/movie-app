@@ -5,7 +5,7 @@ import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const [glass, setGlass] = useState(["40", "80"]);
+  const [glass, setGlass] = useState(["50", "60"]);
 
   return (
     <nav className={style.navMain}>
@@ -16,16 +16,20 @@ const NavBar = () => {
       <Link to="/" onClick={() => setGlass(["50", "60"])}>
         Home
       </Link>
-      <Link to="/" onClick={() => setGlass(["160", "65"])}>
+      <Link to="/filter" onClick={() => setGlass(["160", "65"])}>
         Genre
       </Link>
       <Link to="/" onClick={() => setGlass(["270", "70"])}>
         Movies
       </Link>
-      <Link to="/" onClick={() => setGlass(["385", "70"])}>
+      <Link to="/watch-list" onClick={() => setGlass(["385", "70"])}>
         About
       </Link>
-      <Link to="/watchList" title="watch list">
+      <Link
+        to="/watch-list"
+        onClick={() => setGlass(["500", "0"])}
+        title="watch list"
+      >
         <FontAwesomeIcon className={style.icon} icon={faBookmark} />
       </Link>
     </nav>

@@ -1,0 +1,145 @@
+@import "./../variables";
+
+.mainMovie {
+  min-height: 100vh;
+  width: 80%;
+  min-width: 300px;
+  margin: 200px auto;
+  position: relative;
+
+  .movieHeadMask {
+    min-height: 600px;
+    width: 100%;
+    --bgImg: "";
+    background: top var(--bgImg) no-repeat;
+    backdrop-filter: blur(20px);
+    position: relative;
+    border-radius: 5px;
+  }
+
+  .headInfo {
+    min-height: 600px;
+    width: 100%;
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      to left,
+      rgba($secondary-color, 0.9),
+      $secondary-color 80%
+    );
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    gap: 20px;
+
+    .poster {
+      height: 350px;
+      width: 250px;
+      background: center / cover var(--posterImg);
+      box-shadow: 0 0 8px #ccc;
+      border-radius: 5px;
+    }
+
+    .detail {
+      min-height: 400px;
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+
+      > h2 {
+        font-size: 2rem;
+        font-weight: 500;
+      }
+
+      > h3 {
+        margin-top: 20px;
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+
+      p.firstParagraph {
+        font-weight: 300;
+        user-select: none;
+
+        .icon {
+          margin-inline: 10px 5px;
+          font-size: 0.8rem;
+          vertical-align: -1px;
+        }
+
+        .genre {
+          &:after {
+            content: " , ";
+          }
+
+          &:last-of-type::after {
+            content: "";
+          }
+        }
+      }
+
+      .review {
+        margin-top: 20px;
+        user-select: none;
+
+        .circle {
+          height: 50px;
+          aspect-ratio: 1;
+          display: inline-block;
+          margin-right: 10px;
+          border: 2px solid $primary-color;
+          border-radius: 50%;
+          background: conic-gradient(var(--color) var(--deg), #444 0deg);
+
+          h2 {
+            height: 40px;
+            aspect-ratio: 1;
+            text-align: center;
+            margin: 3px auto;
+            border-radius: 50%;
+            background-color: $primary-color;
+            font-size: 1.2rem;
+            display: grid;
+            place-content: center;
+          }
+        }
+      }
+
+      i {
+        margin-top: 30px;
+        font-weight: 300;
+      }
+
+      .overViewParagraph {
+        font-weight: 300;
+      }
+
+      .production {
+        display: flex;
+
+        .producerImg {
+          max-height: 30px;
+          margin: 10px;
+          max-width: 40px;
+        }
+
+        .homepage {
+          color: #fff;
+          cursor: pointer;
+          margin-left: auto;
+
+          .icon {
+            font-size: 0.6rem;
+            margin-left: 5px;
+            vertical-align: 3px;
+          }
+        }
+      }
+    }
+  }
+}

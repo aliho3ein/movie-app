@@ -1,4 +1,5 @@
 .card {
+  all: unset;
   perspective: 800px;
 
   .movieCard {
@@ -27,7 +28,6 @@
       box-shadow: 0 0 8px #000;
       background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(8px) !important;
-
       transform: translateZ(-1px) scaleX(-1);
       padding-inline: 20px;
       display: flex;
@@ -72,12 +72,13 @@
         opacity: 0;
         transition: opacity 500ms;
         transition-delay: 400ms;
+      }
 
-        span .title {
-          display: block;
-          text-align: center;
-          margin-bottom: 10px;
-        }
+      .title {
+        display: block;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 10px;
       }
 
       .rating {

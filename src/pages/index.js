@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "./../components/header.jsx";
-import Footer from "./../components/footer.jsx";
-import NavBar from "./../components/navBar.jsx";
 import Filter from "./../components/filter.jsx";
 import MovieCard from "./../components/movieCard.jsx";
 import instance from "../api/instance.js";
@@ -18,7 +16,6 @@ const Home = () => {
   const sort = searchParams.get("sort") || "popularity.desc";
 
   useEffect(() => {
-    console.log(`/discover/movie?page=${page}&sort_by=${sort}`);
     instance.get(`/discover/movie?page=${page}&sort_by=${sort}`).then((res) => {
       setResult(res.data.results);
     });
@@ -35,7 +32,6 @@ const Home = () => {
 
   return (
     <>
-      <NavBar />
       <Header />
       <main className="mainContent">
         <Filter />
@@ -58,7 +54,6 @@ const Home = () => {
           Next <FontAwesomeIcon icon={faAngleRight} />
         </Link>
       </div>
-      <Footer />
     </>
   );
 };
