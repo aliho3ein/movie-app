@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faEye, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const Filter = () => {
+const Filter = ({ genre }) => {
   const filterRef = useRef(null);
 
   const goTop = (e) => {
@@ -26,7 +26,7 @@ const Filter = () => {
         <h2>Sort by</h2>
         <Link
           onClick={goTop}
-          to="/?sort=release_date.desc"
+          to={`/?sort=release_date.desc${genre && `&genre=${genre}`}`}
           className={style.sortItem}
         >
           <FontAwesomeIcon icon={faClock} className={style.icon} />
@@ -34,13 +34,17 @@ const Filter = () => {
         </Link>
         <Link
           onClick={goTop}
-          to="/?sort=revenue.desc"
+          to={`/?sort=revenue.desc${genre && `&genre=${genre}`}`}
           className={style.sortItem}
         >
           <FontAwesomeIcon icon={faEye} className={style.icon} />
           Most viewed
         </Link>
-        <Link onClick={goTop} to="/?sort=vote_count" className={style.sortItem}>
+        <Link
+          onClick={goTop}
+          to={`/?sort=vote_count${genre && `&genre=${genre}`}`}
+          className={style.sortItem}
+        >
           <FontAwesomeIcon icon={faHeart} className={style.icon} />
           Most favorite
         </Link>

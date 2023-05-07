@@ -16,13 +16,13 @@ const NavBar = () => {
       <Link to="/" onClick={() => setGlass(["50", "60"])}>
         Home
       </Link>
-      <Link to="/filter" onClick={() => setGlass(["160", "65"])}>
+      <Link to="/genre" onClick={() => setGlass(["160", "65"])}>
         Genre
       </Link>
-      <Link to="/" onClick={() => setGlass(["270", "70"])}>
+      <Link to="/movies" onClick={() => setGlass(["270", "70"])}>
         Movies
       </Link>
-      <Link to="/watch-list" onClick={() => setGlass(["385", "70"])}>
+      <Link to="/about-us" onClick={() => setGlass(["385", "70"])}>
         About
       </Link>
       <Link

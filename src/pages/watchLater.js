@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import MovieCard from "../components/movieCard";
 import { getLocalStorage } from "../actions/localStorage";
 
 const WatchLater = () => {
-  const [result, setResult] = useState(getLocalStorage("watchList"));
+  const result = getLocalStorage("watchList");
 
   useEffect(() => {
-    console.log("list");
+    document.title = "Watch-List | Movie-app";
   }, []);
 
   return (

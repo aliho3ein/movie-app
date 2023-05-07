@@ -33,7 +33,7 @@
         display: flex;
         flex-direction: column;
         padding: 30px 10px;
-        animation: infoJump 5s linear infinite;
+        animation: infoJump 5s ease infinite;
 
         h2 {
           font-size: 1.8rem;
@@ -71,11 +71,11 @@
     transform: translateY(-500px);
   }
 
-  10% {
+  15% {
     transform: translateY(-5px);
   }
 
-  95% {
+  92% {
     transform: translateY(10px);
   }
 

@@ -1,0 +1,33 @@
+@import "./../variables";
+
+.mainAbout {
+  width: 100vw;
+  margin-block: 100px 200px;
+  user-select: none;
+  background-image: radial-gradient(
+    circle,
+    #1f3d48,
+    #183641,
+    #102f3a,
+    #082933,
+    #01222c,
+    #01222c,
+    #01222c
+  );
+
+  .aboutContent {
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    margin-inline: auto;
+    width: 70%;
+    font-size: 1.2rem;
+    // font-weight: 300;
+    padding: 80px;
+    background: rgba($secondary-color, 0.5);
+    border-radius: 5px;
+  }
+}

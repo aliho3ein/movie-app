@@ -84,6 +84,14 @@ main {
   background-color: $accent-color !important;
 }
 
+/** */
+.main404 {
+  height: calc(100vh - 490px);
+  display: grid;
+  place-content: center;
+  font-size: 3rem;
+}
+
 /** Scroll */
 ::-webkit-scrollbar {
   width: 8px;

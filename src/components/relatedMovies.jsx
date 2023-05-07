@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRight,
   faCircleChevronRight,
-  faClapperboard,
 } from "@fortawesome/free-solid-svg-icons";
 
 const RelatedMovies = ({ genre }) => {
@@ -15,11 +14,8 @@ const RelatedMovies = ({ genre }) => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [genre]);
-
-  console.log("rendering");
-
-  console.log(document);
 
   const getData = () => {
     let list = [];
@@ -29,7 +25,6 @@ const RelatedMovies = ({ genre }) => {
     instance(`/discover/movie?with_genres=${list.join(",")}`).then((res) =>
       setResult(res.data?.results)
     );
-    console.log("fetch data");
   };
 
   return (

@@ -15,11 +15,14 @@ const Movie = () => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const getData = () => {
-    instance(`/movie/${id}`).then((res) => setData(res.data));
-    console.log(data);
+    instance(`/movie/${id}`).then((res) => {
+      setData(res.data);
+      document.title = res.data.title + " | movie-app";
+    });
   };
 
   const date = data.release_date?.split("-") || [];

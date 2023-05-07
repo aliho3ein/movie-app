@@ -6,22 +6,27 @@ import instance from "../api/instance.js";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { genreName } from "../components/genre.jsx";
 
 const Home = () => {
   const [result, setResult] = useState([]);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const genre = searchParams.get("genre") || "";
   const page = searchParams.get("page") || 1;
   const sort = searchParams.get("sort") || "popularity.desc";
 
   useEffect(() => {
-    instance.get(`/discover/movie?page=${page}&sort_by=${sort}`).then((res) => {
-      setResult(res.data.results);
-    });
-  }, [page, sort]);
+    document.title = genre ? genreName(genre) : "Movie-App";
 
-  //&primary_release_date.gte=2023
+    instance
+      .get(`/discover/movie?page=${page}&sort_by=${sort}&with_genres=${genre}`)
+      .then((res) => {
+        setResult(res.data.results);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, sort]);
 
   const goTop = () => {
     window.scrollTo({
@@ -34,7 +39,7 @@ const Home = () => {
     <>
       <Header data={result.slice(0, 3)} />
       <main className="mainContent">
-        <Filter />
+        <Filter genre={genre} />
         <div className="content">
           {result.map((item, index) => {
             return <MovieCard key={index} data={item} />;
@@ -46,11 +51,18 @@ const Home = () => {
           onClick={goTop}
           // eslint-disable-next-line eqeqeq
           className={page == 1 ? "deActive" : ""}
-          to={`?page=${page > 1 ? parseInt(page) - 1 : 1}&sort=${sort}`}
+          to={`?page=${page > 1 ? parseInt(page) - 1 : 1}&sort=${sort}${
+            genre && `&genre=${genre}`
+          }`}
         >
           <FontAwesomeIcon icon={faAngleLeft} /> Previous
         </Link>
-        <Link onClick={goTop} to={`?page=${parseInt(page) + 1}&sort=${sort}`}>
+        <Link
+          onClick={goTop}
+          to={`?page=${parseInt(page) + 1}&sort=${sort}${
+            genre && `&genre=${genre}`
+          }`}
+        >
           Next <FontAwesomeIcon icon={faAngleRight} />
         </Link>
       </div>

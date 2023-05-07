@@ -34,7 +34,3 @@ export default instance;
 *REVENUE
 *.DESC
 */
-
-/**
-https://api.themoviedb.org/3/discover/movie?with_genres=28&sort_by=RELEASE_DATE/api_key=dc4175c627af7306fa7cf26b20f58420
-*/
