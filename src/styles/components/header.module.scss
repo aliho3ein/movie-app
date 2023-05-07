@@ -1,4 +1,85 @@
+@import "./../variables";
+
 .header {
-  // height: 80vh;
-  width: 100vw;
+  height: 500px;
+  width: 90vw;
+  margin: 50px auto;
+  overflow: hidden;
+
+  .slideShow {
+    height: 100%;
+    width: 300%;
+    display: flex;
+    transition: transform 500ms cubic-bezier(1, 0, 0, 1);
+
+    .slider {
+      height: 100%;
+      width: 34%;
+      display: grid;
+      place-content: center;
+      background: linear-gradient(
+          to right,
+          $primary-color,
+          transparent,
+          $primary-color
+        ),
+        center / cover var(--bgImg);
+
+      .slidInfo {
+        width: 450px;
+        background-color: rgba($secondary-color, 0.5);
+        backdrop-filter: blur(5px);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        padding: 30px 10px;
+        animation: infoJump 5s linear infinite;
+
+        h2 {
+          font-size: 1.8rem;
+          width: 100%;
+          text-align: center;
+        }
+
+        > p {
+          font-size: 0.8rem;
+        }
+
+        > span {
+          margin-top: 20px;
+          text-align: center;
+        }
+
+        .genres {
+          text-align: center;
+
+          span::after {
+            content: ",";
+          }
+
+          span:last-child::after {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes infoJump {
+  0% {
+    transform: translateY(-500px);
+  }
+
+  10% {
+    transform: translateY(-5px);
+  }
+
+  95% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(500px);
+  }
 }

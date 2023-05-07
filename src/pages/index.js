@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header data={result.slice(0, 3)} />
       <main className="mainContent">
         <Filter />
         <div className="content">
@@ -45,7 +45,7 @@ const Home = () => {
         <Link
           onClick={goTop}
           // eslint-disable-next-line eqeqeq
-          className={page == 1 && "deActive"}
+          className={page == 1 ? "deActive" : ""}
           to={`?page=${page > 1 ? parseInt(page) - 1 : 1}&sort=${sort}`}
         >
           <FontAwesomeIcon icon={faAngleLeft} /> Previous

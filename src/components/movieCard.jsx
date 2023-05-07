@@ -44,7 +44,13 @@ const MovieCard = ({ data }) => {
   };
 
   return (
-    <Link to={`/movie/${data.id}`} className={style.card}>
+    <Link
+      to={`/movie/${data.id}`}
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+      className={style.card}
+    >
       <div className={style.movieCard}>
         <div
           className={style.front}

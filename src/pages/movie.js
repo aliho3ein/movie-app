@@ -14,7 +14,6 @@ const Movie = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
     getData();
   }, [id]);
 
