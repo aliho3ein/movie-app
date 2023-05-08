@@ -1,17 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./../components/header.jsx";
-import Filter from "./../components/filter.jsx";
 import MovieCard from "./../components/movieCard.jsx";
 import instance from "../api/instance.js";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { genreName } from "../components/genre.jsx";
-import MovieContext from "../context/movieContext.js";
 
-const Home = () => {
-  const { dispatch } = useContext(MovieContext);
+const Series = () => {
   const [result, setResult] = useState([]);
+
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const genre = searchParams.get("genre") || "";
@@ -20,12 +18,11 @@ const Home = () => {
 
   useEffect(() => {
     document.title = genre ? genreName(genre) : "Movie-App";
-    instance
-      .get(`/discover/movie?page=${page}&sort_by=${sort}&with_genres=${genre}`)
-      .then((res) => {
-        setResult(res.data.results);
-        dispatch({ type: "LOADING" });
-      });
+
+    instance.get(`/tv/popular?page=${page}&language=en-US`).then((res) => {
+      console.log(res.data);
+      setResult(res.data.results);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, sort]);
 
@@ -40,7 +37,7 @@ const Home = () => {
     <>
       <Header data={result.slice(0, 3)} />
       <main className="mainContent">
-        <Filter genre={genre} />
+        {/* <Filter genre={genre} /> */}
         <div className="content">
           {result.map((item, index) => {
             return <MovieCard key={index} data={item} />;
@@ -71,4 +68,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Series;

@@ -14,7 +14,7 @@ const Slider = ({ data }) => {
     >
       <div className={style.slidInfo}>
         <h2>
-          {data.title} ({data.release_date?.slice(0, 4)})
+          {data.title || data.name} ({data.release_date?.slice(0, 4) || "2023"})
         </h2>
         <p className={style.genres}>
           {data.genre_ids?.map((data, i) => (

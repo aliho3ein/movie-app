@@ -1,5 +1,11 @@
 const MainReducer = (state, action) => {
-  return state;
+  switch (action.type) {
+    case "LOADING":
+      console.log("load");
+      return { ...state, isLoading: false };
+    default:
+      return state;
+  }
 };
 
 export default MainReducer;

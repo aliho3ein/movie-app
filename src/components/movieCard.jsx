@@ -8,10 +8,11 @@ import { faBookmark as marked } from "@fortawesome/free-solid-svg-icons";
 import { setVote } from "../actions/review";
 import { getLocalStorage, setLocalStorage } from "../actions/localStorage";
 import { alertMassage } from "../actions/alerts";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ data }) => {
   const [saved, setSaved] = useState();
+  const navigate = useNavigate();
 
   /** create Date */
   const date = data.release_date?.split("-") || ["unknown Date", "", ""];
@@ -29,6 +30,7 @@ const MovieCard = ({ data }) => {
   });
   /** Save to watchList */
   const saveToWatchList = (e) => {
+    e.stopPropagation();
     list.push(data);
     setSaved(true);
     setLocalStorage("watchList", list);
@@ -37,20 +39,20 @@ const MovieCard = ({ data }) => {
 
   /** remove from watchList */
   const removeFromWatchList = (e) => {
+    e.stopPropagation();
     const newList = list.filter((film) => film.id !== data.id);
     setSaved(false);
     setLocalStorage("watchList", newList);
     alertMassage("Removed from watch list", "info");
   };
 
+  const openCard = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate(`/movie/${data.id}`);
+  };
+
   return (
-    <Link
-      to={`/movie/${data.id}`}
-      onClick={() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }}
-      className={style.card}
-    >
+    <div onClick={openCard} className={style.card}>
       <div className={style.movieCard}>
         <div
           className={style.front}
@@ -71,7 +73,9 @@ const MovieCard = ({ data }) => {
             </div>
           )}
 
-          <h2 className={style.name}>{data.title.slice(0, 20)}</h2>
+          <h2 className={style.name}>
+            {data.title?.slice(0, 20) || data.name}
+          </h2>
           <span className={style.date}>
             {date[2]} {<ConvertDate num={date[1]} />} {date[0]}
           </span>
@@ -83,7 +87,7 @@ const MovieCard = ({ data }) => {
           <div className={style.rating}>{setVote(data.vote_average)}</div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
