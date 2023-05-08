@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "./../components/header.jsx";
 import MovieCard from "./../components/movieCard.jsx";
 import instance from "../api/instance.js";
@@ -6,8 +6,11 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { genreName } from "../components/genre.jsx";
+import MovieContext from "./../context/movieContext";
 
 const Series = () => {
+  const { dispatch } = useContext(MovieContext);
+
   const [result, setResult] = useState([]);
 
   const location = useLocation();
@@ -18,9 +21,10 @@ const Series = () => {
 
   useEffect(() => {
     document.title = genre ? genreName(genre) : "Movie-App";
+    dispatch({ type: "LOADING_ON" });
 
     instance.get(`/tv/popular?page=${page}&language=en-US`).then((res) => {
-      console.log(res.data);
+      dispatch({ type: "LOADING" });
       setResult(res.data.results);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

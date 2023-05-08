@@ -3,10 +3,14 @@
 .relatedMain {
   height: 450px;
   width: 100%;
-  margin-top: 180px;
+  margin-top: 380px;
   overflow: hidden;
   border-right: 1px solid $secondary-color;
   position: relative;
+
+  // @include MediaQuery(1260px) {
+  //   margin-top: 180px;
+  // }
 
   .suggestItems {
     height: 400px;

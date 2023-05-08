@@ -3,3 +3,9 @@ $primary-color: #01222c;
 $secondary-color: #314e5a;
 $text-color: #eee;
 $accent-color: #02bdbd;
+
+@mixin MediaQuery($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import instance from "../api/instance";
 import style from "./../styles/components/movie.module.scss";
@@ -8,10 +8,12 @@ import { faClock, faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import RelatedMovies from "../components/relatedMovies";
 import { circleColor, timeCalculator } from "../actions";
+import MovieContext from "../context/movieContext";
 
 const Movie = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const { dispatch } = useContext(MovieContext);
 
   useEffect(() => {
     getData();
@@ -19,9 +21,12 @@ const Movie = () => {
   }, [id]);
 
   const getData = () => {
+    dispatch({ type: "LOADING_ON" });
+
     instance(`/movie/${id}`).then((res) => {
       setData(res.data);
       document.title = res.data.title + " | movie-app";
+      dispatch({ type: "LOADING" });
     });
   };
 
@@ -33,14 +38,13 @@ const Movie = () => {
     <main className="mainContent">
       <div className={style.mainMovie}>
         <div
-          className={style.movieHeadMask}
+          className={style.headInfo}
           style={{
             "--bgImg": data?.backdrop_path
               ? `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/${data?.backdrop_path})`
               : "url('https://www.howtogeek.com/wp-content/uploads/2020/02/netflix_logo.png?height=200p&trim=2,2,2,2')",
           }}
-        ></div>
-        <div className={style.headInfo}>
+        >
           <div
             className={style.poster}
             style={{

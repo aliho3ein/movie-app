@@ -1,19 +1,37 @@
 @import "./../variables";
 
 .navMain {
-  height: 80px;
+  height: 100vh;
   width: 100vw;
-  display: flex;
   align-items: center;
   gap: 50px;
-  position: relative;
+  position: fixed;
+  display: none;
+  top: 0;
+  flex-direction: column;
+  z-index: 80;
+  background-color: rgba($secondary-color, 0.5);
+  backdrop-filter: blur(20px);
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 500ms;
+
+  @include MediaQuery(1170px) {
+    height: 80px;
+    width: 100vw;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    opacity: 1;
+  }
 
   .navGlass {
     height: 30px;
     position: absolute;
     border-radius: 3px;
-    backdrop-filter: blur(0.7px);
-    z-index: -1;
     transition: all 300ms;
     cursor: pointer;
     background: linear-gradient(
@@ -27,6 +45,11 @@
       rgb(255 255 255 /0.2),
       rgb(255 255 255 /0.4)
     );
+    display: none;
+
+    @include MediaQuery(1170px) {
+      display: block;
+    }
   }
 
   a {
@@ -37,7 +60,9 @@
     font-size: 1.1rem;
 
     &:nth-child(2) {
-      margin-left: 50px;
+      @include MediaQuery(1170px) {
+        margin-left: 50px;
+      }
     }
 
     &:last-child {
@@ -57,9 +82,15 @@
   }
 
   .searchBox {
-    margin-left: auto;
+    width: 90%;
     display: flex;
+    justify-content: center;
     position: relative;
+
+    @include MediaQuery(1170px) {
+      margin-left: auto;
+      width: auto;
+    }
 
     .searchBtn {
       all: unset;
@@ -146,5 +177,52 @@
         }
       }
     }
+  }
+}
+
+.burgerMenu {
+  height: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  left: 0;
+  right: 0;
+  top: 20px;
+  margin-inline: auto;
+  position: fixed;
+  z-index: 90;
+  background-color: rgba($secondary-color, 0.5);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 5px #999;
+  cursor: pointer;
+
+  @mixin burger {
+    height: 3px;
+    width: 30px;
+    background-color: #eee;
+    border-radius: 8px;
+    transition: all 300ms;
+  }
+
+  div {
+    position: relative;
+    @include burger;
+
+    &:after,
+    &:before {
+      @include burger;
+      content: "";
+      position: absolute;
+      top: -8px;
+    }
+
+    &:after {
+      top: 8px;
+    }
+  }
+
+  @include MediaQuery(1170px) {
+    display: none;
   }
 }

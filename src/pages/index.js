@@ -20,6 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     document.title = genre ? genreName(genre) : "Movie-App";
+    dispatch({ type: "LOADING_ON" });
     instance
       .get(`/discover/movie?page=${page}&sort_by=${sort}&with_genres=${genre}`)
       .then((res) => {

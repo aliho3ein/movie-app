@@ -2,9 +2,13 @@
 
 .aSide {
   margin-block: 100px;
-  width: 20%;
   position: relative;
   user-select: none;
+  display: none;
+
+  @include MediaQuery(760px) {
+    display: block;
+  }
 
   .maniFilter {
     width: 300px;

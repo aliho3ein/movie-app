@@ -1,8 +1,9 @@
 const MainReducer = (state, action) => {
   switch (action.type) {
     case "LOADING":
-      console.log("load");
       return { ...state, isLoading: false };
+    case "LOADING_ON":
+      return { ...state, isLoading: true };
     default:
       return state;
   }

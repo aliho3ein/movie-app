@@ -1,9 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import style from "./../styles/components/about.module.scss";
+import MovieContext from "./../context/movieContext";
 
 const About = () => {
+  const { dispatch } = useContext(MovieContext);
+
   useEffect(() => {
     document.title = "About-us";
+    dispatch({ type: "LOADING" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
