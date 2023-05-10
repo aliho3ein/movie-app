@@ -5,7 +5,7 @@ import { faClock, faEye, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const Filter = ({ genre }) => {
-  const filterRef = useRef(null);
+  const filterRef = useRef();
 
   const goTop = (e) => {
     filterRef.current
